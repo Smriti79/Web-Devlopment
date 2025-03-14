@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Find and Replace</title>
+</head>
+<body>
+    <p id="output">Original text here</p>
+    <input type="text" id="textToReplace" placeholder="Text to replace">
+    <input type="text" id="replacementText" placeholder="Replacement text">
+    <button id="replaceButton">Replace</button>
+    <script>
+const textToReplaceInput = document.getElementById('textToReplace');
+const replacementTextInput = document.getElementById('replacementText');
+const replaceButton = document.getElementById('replaceButton');
+const outputElement = document.getElementById('output');
+
+replaceButton.addEventListener('click', lookup);
+
+function lookup() {
+    let s = outputElement.textContent;
+    let rt = replacementTextInput.value;
+
+    let regex = new RegExp(textToReplaceInput.value, 'g'); 
+    if (regex.test(s)) { 
+        s = s.replace(regex, rt);
+
+        outputElement.textContent = s;
+    }
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update XML Data</title>
+</head>
+<body>
+    <form id="updateForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" required>
+        <br>
+        <button type="submit">Update</button>
+    </form>
+    <div id="message"></div>
+    <script>
+        document.getElementById('updateForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var name = document.getElementById('name').value;
+    var description = document.getElementById('description').value;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById('message').innerHTML = "Data updated successfully!";
+        } };    xhttp.open("POST", "update_xml.php", true); 
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("name=" + encodeURIComponent(name) + "&description=" + encodeURIComponent(description));
+}) </script>
+</body>
+</html>

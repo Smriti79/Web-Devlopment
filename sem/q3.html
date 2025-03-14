@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Friend Checker</title>
+</head>
+<body>
+
+  <form id="friendForm">
+    <label for="nameInput">Enter a name:</label>
+    <input type="text" id="nameInput" />
+    <button type="button" onclick="checkFriend()">Check Friend</button>
+  </form>
+
+  <script>
+    function checkFriend() {
+      const userName = document.getElementById('nameInput').value.toLowerCase();
+
+      switch (userName) {
+        case 'anuradha':
+          console.log("You are a friend, Anuradha");
+          break;
+        case 'anubhav':
+          console.log("You are a friend, Anubhav");
+          break;
+        case 'gaurav':
+          console.log("You are a friend, Gaurav");
+          break;
+        default:
+          console.log("Sorry, I don't know you. You are not a recognized friend.");
+          break;
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+printOne = () => {
+  console.log("One");
+};
+
+ printTwo = () => {
+  console.log("Two");
+};
+
+
+printThree = () => {
+  console.log("Three");
+  printOne();
+  printTwo();
+};
+
+
+printFour = () => {
+  console.log("Four");
+  setTimeout(printOne, 0); 
+  setTimeout(printThree, 0);
+};
+
+
+printFour();
+
+
+
+
+    </script>
+</body>
+</html>

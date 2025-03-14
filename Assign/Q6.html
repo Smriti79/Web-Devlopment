@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Filter XML Data</title>
+</head>
+<body>
+    <input type="text" id="filterInput" placeholder="Filter by tag or attribute">
+    <button id="filterButton">Filter</button>
+    <div id="results"></div>
+    <script>
+        document.getElementById('filterButton').addEventListener('click', function() {
+    var filterCriteria = document.getElementById('filterInput').value;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            if (this.status == 200) {
+                var xmlDoc = this.responseXML;
+                var filteredResults = xmlDoc.getElementsByTagName(filterCriteria);
+                var resultsDiv = document.getElementById('results');
+                resultsDiv.innerHTML = '';
+                for (var i = 0; i < filteredResults.length; i++) {
+                    resultsDiv.innerHTML += filteredResults[i].textContent + '<br>';
+                }} else {
+                document.getElementById('results').innerHTML = 'Error fetching data.';
+            }}};  xhttp.open("GET", "https://example.com/api/data.xml", true);
+    xhttp.send();
+}); </script>
+</body>
+</html>

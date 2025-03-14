@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email Validation</title>
+</head>
+<body>
+    <input type="text" id="emailInput" placeholder="Enter email">
+    <button id="validateButton">Validate Email</button>
+    <p id="output"></p>
+
+    <script>
+        // Step a: Select the input, output, and button elements from the page as JavaScript objects
+const emailInput = document.getElementById('emailInput');
+const outputElement = document.getElementById('output');
+const validateButton = document.getElementById('validateButton');
+
+// Step b: Add an event listener to the button to run a block of code when clicked
+validateButton.addEventListener('click', function() {
+    // Get the current value in the input field
+    let email = emailInput.value;
+    let response = ''; // Blank response value
+
+    // Step c: Add a test with the string value from the input field and the expression for email format
+    let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+        // If the test result is false, update the response output to say Invalid Email
+        response = 'Invalid Email';
+        outputElement.style.color = 'red';
+    } else {
+        // If the condition of the test returns true, add a response that confirms the email format is correct
+        response = 'Valid Email';
+        outputElement.style.color = 'green';
+    }
+
+    // Step e: Output the response value into the output element
+    outputElement.textContent = response;
+})
+
+    </script>
+</body>
+</html>

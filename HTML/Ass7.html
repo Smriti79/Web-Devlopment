@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="myCanvas_1" width="500" height="500"></canvas>
+  <canvas id="myCanvas_2" width="500" height="500"></canvas>
+  <canvas id="myCanvas_3" width="1000" height="1000"></canvas>
+
+
+  <script>
+    const myCanvas_1 = document.getElementById('myCanvas_1');
+    const myCanvas_2 = document.getElementById('myCanvas_2');
+    const myCanvas_3 = document.getElementById('myCanvas_3');
+    const ctx_1 = myCanvas_1.getContext('2d');
+    const ctx_2 = myCanvas_2.getContext('2d');
+    const ctx_3 = myCanvas_3.getContext('2d');
+
+    ctx_1.fillStyle = 'red';
+    ctx_1.fillRect(0, 0, 500, 500);
+    ctx_1.clearRect(100, 100, 300, 300);
+
+    ctx_2.fillStyle = 'blue';
+    ctx_2.fillRect(0, 0, 500, 500);
+    ctx_2.arc(250, 250, 100, 0, 2 * Math.PI);
+    ctx_2.fillStyle = 'white';
+    ctx_2.fill();
+
+    ctx_3.drawImage(myCanvas_1, 0, 0);
+    ctx_3.drawImage(myCanvas_2, 0, 500);
+  </script>
+</body>
+</html>

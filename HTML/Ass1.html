@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="myCanvas" width="500" height="500"></canvas>
+
+  <script>
+    const myCanvas = document.getElementById('myCanvas');
+    const ctx = myCanvas.getContext('2d');
+    
+    /** @type {CanvasRenderingContext2D} */
+    ctx.fillStyle = '#a2b9bc';
+    ctx.fillRect(0, 0, 400, 200);
+    ctx.arc(200, 100, 40, 0, Math.PI * 2);
+    ctx.fillStyle = '#878f99';
+    ctx.fill();
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = '#6b5b95';
+    ctx.stroke();
+  </script>
+</body>
+</html>

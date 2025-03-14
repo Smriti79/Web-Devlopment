@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+const productCatalog = [];
+
+const laptop = { name: 'Dell XPS 13', model: 'XPS-9310', cost: 1299.99, quantity: 5 };
+const smartphone = { name: 'iPhone 13', model: 'A2628', cost: 899.99, quantity: 15 };
+const headphones = { name: 'Sony WH-1000XM4', model: 'WH-1000XM4', cost: 349.99, quantity: 10 };
+
+productCatalog.push(laptop, smartphone, headphones);
+
+console.log("Inventory Array:", productCatalog);
+
+const thirdItemQuantity = productCatalog[2].quantity;
+console.log("Quantity of the third item:", thirdItemQuantity);
+
+const smartwatch = { name: 'Apple Watch Series 7', model: 'S7', cost: 399.99, quantity: 8 };
+
+productCatalog.push(smartwatch);
+
+console.log("Updated Inventory Array:", productCatalog);
+
+
+
+
+    </script>
+</body>
+</html>

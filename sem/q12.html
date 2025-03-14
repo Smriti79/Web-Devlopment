@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="square yellow"></div>
+        <div class="square green"></div>
+        <div class="square purple"></div>
+        <div class="square red"></div>
+    </div>
+    <style>
+        .container {
+    position: relative;
+    width: 250px; /* Adjust as needed */
+    height: 250px; /* Adjust as needed */
+}
+
+.square {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+}
+
+.yellow {
+    background-color: yellow;
+    z-index: 4;
+}
+
+.green {
+    background-color: green;
+    z-index: 3;
+    bottom: 20px;
+    right: 20px;
+}
+
+.purple {
+    background-color: purple;
+    z-index: 2;
+    bottom: 40px;
+    right: 40px;
+}
+
+.red {
+    background-color: red;
+    z-index: 1;
+    bottom: 60px;
+    right: 60px;
+}
+
+    </style>
+</body>
+</html>

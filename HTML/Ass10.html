@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initialscale=1.0">
+<title>Video Playlist</title>
+<style>
+ #videoPlayer {
+ width: 640px;
+ height: 360px;
+ margin-bottom: 20px;
+ }
+ .playlist {
+ list-style-type: none;
+ padding: 0;
+ margin: 0;
+ }
+ .playlist li {
+ cursor: pointer;
+ padding: 5px;
+ background-color: #f0f0f0;
+ margin-bottom: 5px;
+ }
+ .playlist li:hover {
+ background-color: #ccc;
+ }
+</style>
+</head>
+<body>
+<video id="videoPlayer" controls>
+ <source src="Fish.mp4" type="video/mp4">
+ Your browser does not support the video tag.
+</video>
+<ul class="playlist">
+ <li data-video-src="Rain.mp4">Video 1</li>
+ <li data-video-src="Game.mp4">Video 2</li>
+ <li data-video-src="Cloud.mp4">Video 3</li>
+</ul>
+<script>
+ window.onload = function() {
+ var videoPlayer = document.getElementById("videoPlayer");
+ var playlistItems = document.querySelectorAll(".playlist li");
+ // Add click event listeners to playlist items
+ playlistItems.forEach(function(item) {
+ item.addEventListener("click", function() {
+ var videoSrc = item.getAttribute("data-video-src");
+ videoPlayer.src = videoSrc;
+ videoPlayer.play();
+ });
+ });
+ // Play/Pause functionality
+ videoPlayer.addEventListener("click", function() {
+ if (videoPlayer.paused) {
+ videoPlayer.play();
+ } else {
+ videoPlayer.pause();
+ }
+ });
+ // Volume adjustment
+ var volumeControl = document.createElement("input");
+ volumeControl.type = "range";
+ volumeControl.min = 0;
+ volumeControl.max = 1;
+ volumeControl.step = 0.1;
+ volumeControl.value = videoPlayer.volume;
+ volumeControl.addEventListener("input", function() {
+ videoPlayer.volume = this.value;
+ });
+ videoPlayer.parentNode.insertBefore(volumeControl, 
+videoPlayer.nextSibling);
+ };
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initialscale=1.0">
+<title>HTML5 Canvas Puzzle Game</title>
+<style>
+ canvas {
+ border: 2px solid black;
+ display: block;
+ margin: 0 auto;
+ }
+</style>
+</head>
+<body>
+<canvas id="puzzleCanvas" width="600" height="400"></canvas>
+<script>
+ window.onload = function() {
+ var canvas = document.getElementById("puzzleCanvas");
+ var ctx = canvas.getContext("2d");
+ var img = new Image();
+ img.onload = function() {
+ var pieces = cutImageIntoPieces(img, 3, 3); 
+ var shuffledPieces = shuffleArray(pieces);
+ drawPuzzle(shuffledPieces);
+ canvas.addEventListener('mousedown', onMouseDown);
+ canvas.addEventListener('mouseup', onMouseUp);};
+ img.src = "your_image_url.jpg";
+ function cutImageIntoPieces(image, rows, cols) {
+ var pieces = [];
+ var pieceWidth = image.width / cols;
+ var pieceHeight = image.height / rows;
+ for (var y = 0; y < rows; y++) {
+ for (var x = 0; x < cols; x++) {
+ var piece = {
+ x: x * pieceWidth,
+ y: y * pieceHeight,
+ width: pieceWidth,
+ height: pieceHeight};
+ pieces.push(piece);}}
+ return pieces;}
+ function shuffleArray(array) {
+ var currentIndex = array.length, temporaryValue, randomIndex;
+ while (0 !== currentIndex) {
+ randomIndex = Math.floor(Math.random() * currentIndex);
+ currentIndex -= 1;
+ temporaryValue = array[currentIndex];
+ array[currentIndex] = array[randomIndex];
+ array[randomIndex] = temporaryValue;}
+ return array;
+ }function drawPuzzle(pieces) {
+ ctx.clearRect(0, 0, canvas.width, canvas.height);
+ pieces.forEach(function(piece) {
+ ctx.drawImage(img, piece.x, piece.y, piece.width, piece.height, 
+piece.x, piece.y, piece.width, piece.height);
+ ctx.strokeRect(piece.x, piece.y, piece.width, piece.height);})};
+ var selectedPiece = null;
+ var offsetX, offsetY;
+ function onMouseDown(e) {
+ var mouseX = e.clientX - canvas.getBoundingClientRect().left;
+ var mouseY = e.clientY - canvas.getBoundingClientRect().top;
+ for (var i = 0; i < shuffledPieces.length; i++) {
+ var piece = shuffledPieces[i];
+ if (mouseX >= piece.x && mouseX <= piece.x + piece.width 
+&& mouseY >= piece.y && mouseY <= piece.y + piece.height) {
+ selectedPiece = piece;
+ offsetX = mouseX - piece.x;
+ offsetY = mouseY - piece.y;
+ break;}}}
+ function onMouseUp(e) {
+ if (selectedPiece !== null);
+ var mouseX = e.clientX - canvas.getBoundingClientRect().left;
+ var mouseY = e.clientY - canvas.getBoundingClientRect().top;
+ selectedPiece.x = mouseX - offsetX;
+ selectedPiece.y = mouseY - offsetY;
+ drawPuzzle(shuffledPieces);
+ selectedPiece = null;}}
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <audio id="myAudio" src="Bajrang Baan.mp3"></audio>
+  <button onclick="play()">Play</button>
+  <button onclick="pause()">Pause</button>
+  <input type="range" name="volume" id="myVolume" max="100" min="0">
+  <div id="currentTime"></div>
+  <script>
+    const myAudio = document.getElementById('myAudio');
+    function play() {
+      myAudio.play();
+    }
+    function pause() {
+      myAudio.pause();
+    }
+    const myVolume = document.getElementById('myVolume');
+    myVolume.addEventListener('input', () => {
+      if(myVolume.value.length == 0) myAudio.volume = 1;
+      else myAudio.volume = myVolume.value / 100;
+    });
+    myAudio.addEventListener('timeupdate', () => {
+      const currentTime = document.getElementById('currentTime');
+      currentTime.innerText = Math.round(myAudio.currentTime) + 's';
+    });
+  </script>
+</body>
+</html>

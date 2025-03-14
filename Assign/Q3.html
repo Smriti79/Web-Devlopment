@@ -1,0 +1,57 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete JavaScript Course</title>
+</head>
+<body>
+<textarea name="txtarea" rows=2 cols=50></textarea> 
+<button>Extract Emails</button>
+<textarea name="txtarea2" rows=2 cols=50></textarea>
+<script>
+          // Step a: In JavaScript, select both text areas and the button and set them as JavaScript objects
+const textarea1 = document.querySelector('textarea[name="txtarea"]');
+const textarea2 = document.querySelector('textarea[name="txtarea2"]');
+const button = document.querySelector('button');
+
+// Step b: Add an event listener to the button that will invoke a function that gets the content of
+// the first textarea and filters it to only accept email addresses
+button.addEventListener('click', function() {
+    // Step c: Get the content of the first textarea
+    let content = textarea1.value;
+    let emails = [];
+    let uniqueEmails = [];
+    let emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
+    emails = content.match(emailRegex);
+
+    if (emails) {
+        emails.forEach(function(email) {
+            if (!uniqueEmails.includes(email)) {
+                uniqueEmails.push(email);
+            }
+        });
+        textarea2.value = uniqueEmails.join('\n');
+    } else {
+        textarea2.value = 'No emails found.';
+    }
+})
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Tracking App</title>
+</head>
+<body>
+
+  <script>
+    class Employee {
+      constructor(firstName, lastName, yearsWorked) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.yearsWorked = yearsWorked;
+      }
+
+      getDetails() {
+        return `${this.firstName} ${this.lastName} has worked at the company for ${this.yearsWorked} years.`;
+      }
+    }
+     employee1 = new Employee('Narendra ', 'Modi', 3);
+    
+     employee2 = new Employee('Vladmir', 'Putin', 5);
+        employee3 = new Employee('Xi', ' Jinping', 2);
+
+  employeesArray = [employee1, employee2, employee3];
+
+    
+    employeesArray.forEach(employee => {
+      console.log(employee.getDetails() + '<br>');
+    });
+  </script>
+
+</body>
+</html>

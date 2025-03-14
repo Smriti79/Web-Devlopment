@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="myCanvas" width="500" height="500"></canvas>
+
+  <script>
+    const myCanvas = document.getElementById('myCanvas');
+    /** @type {CanvasRenderingContext2D} */
+    const ctx = myCanvas.getContext('2d');
+
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 3;
+    let x = Math.floor(Math.random() * 500);
+    let y = Math.floor(Math.random() * 500);
+    let vx = Math.floor(Math.random() * 2);
+    let vy = Math.floor(Math.random() * 4);
+    move();
+    function move() {
+      requestAnimationFrame(move);
+      ctx.clearRect(0, 0, 500, 500);
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.lineTo(500, 0);
+      ctx.lineTo(500, 500);
+      ctx.lineTo(0, 500);
+      ctx.lineTo(0, 0);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(x, y, 20, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.fill();
+
+      if(20 + x > 500){
+        vx = 0 - vx;
+        ctx.fillStyle = 'yellow';
+      }
+      if(x - 20 < 0){
+        vx = 0 - vx;
+        ctx.fillStyle = 'blue';
+      } 
+        
+      if(y + 20 > 500) {
+        vy = 0 - vy;
+        ctx.fillStyle = 'green';
+      }
+      if(y - 20 < 0) {
+        vy = 0 - vy;
+        ctx.fillStyle = 'red';
+      }
+
+      x = x + vx;
+      y = y + vy;
+    }
+
+
+  </script>
+</body>
+
+</html>

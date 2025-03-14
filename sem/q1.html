@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+const theList = ['Laurence', 'Svekis', true, 35, null, undefined, { test: 'one', score: 55 }, ['one', 'two']];
+console.log(JSON.stringify(theList));
+
+theList.shift();
+theList.pop();
+
+theList.unshift("FIRST");
+theList[2] = "MIDDLE";
+theList[3] = "hello World";
+theList.push("LAST");
+
+console.log(JSON.stringify(theList));
+
+
+    </script>
+    
+</body>
+</html>
